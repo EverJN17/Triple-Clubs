@@ -238,7 +238,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 2
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: F:/Dev/Keystroke/ASLI/user.keystore
+  AndroidKeystoreName: G:/Dev/Keystroke/ASLI/user.keystore
   AndroidKeyaliasName: key0
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

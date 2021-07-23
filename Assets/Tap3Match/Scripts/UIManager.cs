@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿		using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -121,7 +121,7 @@ public class UIManager : MonoBehaviour {
     }
 
 	public void OnRatingButtonPressed(){
-        StoreReview.RequestRating();
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.NodsEntertainment.TripleClubs");
         Debug.Log("Button Rating Request");
     }
 	//show game over gui

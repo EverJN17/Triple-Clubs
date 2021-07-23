@@ -15,7 +15,7 @@ namespace EasyMobile.Demo
         private GameObject curtain = null, isAdRemovedInfo = null;
 
         [SerializeField]
-        private Text defaultBannerNetworkText = null, defaultInterstitialNetworkText = null, defaultRewardedNetworkText = null;
+        private Text defaultBannerNetworkText = null, defaultInterstitialNetworkText = null, defaultRewardedNetworkText = null, defaultRewardedInterstitialNetworkText = null;
 
         [SerializeField]
         private Dropdown autoLoadModeDropdown = null;
@@ -29,6 +29,9 @@ namespace EasyMobile.Demo
 
         [SerializeField]
         private RewardedVideoSection rewardedVideoUI = null;
+
+        [SerializeField]
+        private RewardedInterstitialSection rewardedInterstitialUI = null;
 
         private AutoAdLoadingMode lastAutoLoadMode = AutoAdLoadingMode.None;
 
@@ -46,14 +49,24 @@ namespace EasyMobile.Demo
             bannerUI.Start();
             interstitialUI.Start(demoUtils);
             rewardedVideoUI.Start(demoUtils);
+            rewardedInterstitialUI.Start(demoUtils);
             SetupDefaultNetworkTexts();
             SetupAutoLoadModeDropdown();
+
+            StartCoroutine(DelayInitialization());
+        }
+
+        private IEnumerator DelayInitialization()
+        {
+            yield return new WaitForSeconds(4);
+            Advertising.Initialize();
         }
 
         private void Update()
         {
             interstitialUI.Update();
             rewardedVideoUI.Update();
+            rewardedInterstitialUI.Update();
 
             // Check if ads were removed.
             bool adRemoved = Advertising.IsAdRemoved();
@@ -88,7 +101,7 @@ namespace EasyMobile.Demo
 
         protected void SetupDefaultNetworkTexts()
         {
-            AdSettings.DefaultAdNetworks defaultNetwork = new AdSettings.DefaultAdNetworks(BannerAdNetwork.None, InterstitialAdNetwork.None, RewardedAdNetwork.None);
+            AdSettings.DefaultAdNetworks defaultNetwork = new AdSettings.DefaultAdNetworks(BannerAdNetwork.None, InterstitialAdNetwork.None, RewardedAdNetwork.None, RewardedInterstitialAdNetwork.None);
 
 #if UNITY_ANDROID
             defaultNetwork = EM_Settings.Advertising.AndroidDefaultAdNetworks;
@@ -99,6 +112,7 @@ namespace EasyMobile.Demo
             defaultBannerNetworkText.text = "Default banner ad network: " + defaultNetwork.bannerAdNetwork.ToString();
             defaultInterstitialNetworkText.text = "Default interstitial ad network: " + defaultNetwork.interstitialAdNetwork.ToString();
             defaultRewardedNetworkText.text = "Default rewarded video network: " + defaultNetwork.rewardedAdNetwork.ToString();
+            defaultRewardedInterstitialNetworkText.text = "Default rewarded video network: " + defaultNetwork.rewardedInterstitialNetwork.ToString();
         }
 
         protected void SetupAutoLoadModeDropdown()
@@ -127,6 +141,9 @@ namespace EasyMobile.Demo
             Advertising.RewardedAdSkipped += OnRewardedAdSkipped;
             Advertising.RewardedAdCompleted += OnRewardedAdCompleted;
             Advertising.InterstitialAdCompleted += OnInterstitialAdCompleted;
+
+            Advertising.RewardedInterstitialAdCompleted += OnRewardedInterstitialCompleted;
+            Advertising.RewardedInterstitialAdSkipped += OnRewardedInterstitialSkipped;
         }
 
         private void OnDisable()
@@ -134,6 +151,33 @@ namespace EasyMobile.Demo
             Advertising.RewardedAdSkipped -= OnRewardedAdSkipped;
             Advertising.RewardedAdCompleted -= OnRewardedAdCompleted;
             Advertising.InterstitialAdCompleted -= OnInterstitialAdCompleted;
+
+            Advertising.RewardedInterstitialAdCompleted -= OnRewardedInterstitialCompleted;
+            Advertising.RewardedInterstitialAdSkipped -= OnRewardedInterstitialSkipped;
+        }
+
+        private void OnRewardedInterstitialSkipped(RewardedInterstitialAdNetwork network, AdPlacement placement)
+        {
+            StartCoroutine(DelayCoroutine(GetPopupDelayTime((AdNetwork)network), () =>
+                NativeUI.Alert("Rewarded Interstitial Ad Skipped", string.Format(
+                    "The rewarded interstitial ad was skipped, and the user shouldn't get the reward. Network: {0}, Placement: {1}",
+                    network, AdPlacement.GetPrintableName(placement)))));
+
+            Debug.Log(string.Format(
+                "The rewarded interstitial ad was skipped, and the user shouldn't get the reward. Network: {0}, Placement: {1}",
+                network, AdPlacement.GetPrintableName(placement)));
+        }
+
+        private void OnRewardedInterstitialCompleted(RewardedInterstitialAdNetwork network, AdPlacement placement)
+        {
+            StartCoroutine(DelayCoroutine(GetPopupDelayTime((AdNetwork)network), () =>
+                NativeUI.Alert("Rewarded Interstitial Ad Completed", string.Format(
+                    "The rewarded interstitial ad has completed, this is when you should reward the user. Network: {0}, Placement: {1}",
+                    network, AdPlacement.GetPrintableName(placement)))));
+
+            Debug.Log(string.Format(
+                "The rewarded interstitial ad has completed, this is when you should reward the user. Network: {0}, Placement: {1}",
+                network, AdPlacement.GetPrintableName(placement)));
         }
 
         private void OnInterstitialAdCompleted(InterstitialAdNetwork network, AdPlacement placement)

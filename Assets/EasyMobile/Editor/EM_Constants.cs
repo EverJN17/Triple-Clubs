@@ -21,7 +21,7 @@ namespace EasyMobile.Editor
         public const string SkinTextureFolder = SkinFolder + "/Textures";
         public const string ResourcesFolder = RootPath + "/Resources";
         public const string ScriptsFolder = RootPath + "/Scripts";
-        public const string ReceiptValidationFolder = "Assets/Plugins/UnityPurchasing/generated";
+        public const string DummyReceiptValidationFolder = GeneratedFolder;
         public const string AssetsPluginsAndroidFolder = "Assets/Plugins/Android";
         public const string AssetsPluginsIOSFolder = "Assets/Plugins/iOS";
 

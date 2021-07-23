@@ -457,6 +457,7 @@ namespace EasyMobile.Editor
                     EditorGUILayout.PropertyField(AdProperties.admobDefaultBannerAdId.property, AdProperties.admobDefaultBannerAdId.content, true);
                     EditorGUILayout.PropertyField(AdProperties.admobDefaultInterstitialAdId.property, AdProperties.admobDefaultInterstitialAdId.content, true);
                     EditorGUILayout.PropertyField(AdProperties.admobDefaultRewardedAdId.property, AdProperties.admobDefaultRewardedAdId.content, true);
+                    EditorGUILayout.PropertyField(AdProperties.admobDefaultRewardedInterstitialAdId.property, AdProperties.admobDefaultRewardedInterstitialAdId.content, true);
                     EditorGUI.indentLevel--;
 
                     // Custom placements.
@@ -466,6 +467,7 @@ namespace EasyMobile.Editor
                     EditorGUILayout.PropertyField(AdProperties.admobCustomBannerAdIds.property, AdProperties.admobCustomBannerAdIds.content, true);
                     EditorGUILayout.PropertyField(AdProperties.admobCustomInterstitialAdIds.property, AdProperties.admobCustomInterstitialAdIds.content, true);
                     EditorGUILayout.PropertyField(AdProperties.admobCustomRewardedAdIds.property, AdProperties.admobCustomRewardedAdIds.content, true);
+                    EditorGUILayout.PropertyField(AdProperties.admobCustomRewardedInterstitialAdIds.property, AdProperties.admobCustomRewardedInterstitialAdIds.content, true);
                     EditorGUI.indentLevel--;
 
                     // Ad targeting settings.

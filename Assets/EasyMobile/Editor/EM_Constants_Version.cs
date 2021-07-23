@@ -9,8 +9,8 @@ namespace EasyMobile.Editor
         public const string ProductVariant = "Pro";
 
         // Current version
-        public const string versionString = "2.16.0";
-        public const int versionInt = 0x021600;
+        public const string versionString = "2.17.1";
+        public const int versionInt = 0x021701;
     }
 }
 

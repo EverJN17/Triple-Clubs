@@ -21,10 +21,12 @@ MonoBehaviour:
       bannerAdNetwork: 0
       interstitialAdNetwork: 0
       rewardedAdNetwork: 0
+      rewardedInterstitialNetwork: 0
     mAndroidDefaultAdNetworks:
-      bannerAdNetwork: 0
-      interstitialAdNetwork: 0
-      rewardedAdNetwork: 0
+      bannerAdNetwork: 2
+      interstitialAdNetwork: 2
+      rewardedAdNetwork: 2
+      rewardedInterstitialNetwork: 2
     mAdColony:
       mEnable: 0
       mAppId:
@@ -64,14 +66,17 @@ MonoBehaviour:
         mIosId: 
         mAndroidId: 
       mDefaultBannerAdId:
-        mIosId: ca-app-pub-2303710581321446/5326276198
+        mIosId: 
         mAndroidId: ca-app-pub-9721116390405317/4921546548
       mDefaultInterstitialAdId:
-        mIosId: ca-app-pub-2303710581321446/2700112853
+        mIosId: 
         mAndroidId: ca-app-pub-9721116390405317/9532597594
       mDefaultRewardedAdId:
         mIosId: 
         mAndroidId: 'ca-app-pub-9721116390405317/9048300291   '
+      mDefaultRewardedInterstitialAdId:
+        mIosId: 
+        mAndroidId: 
       mCustomBannerAdIds:
         keys: []
         values: []
@@ -79,6 +84,9 @@ MonoBehaviour:
         keys: []
         values: []
       mCustomRewardedAdIds:
+        keys: []
+        values: []
+      mCustomRewardedInterstitialAdIds:
         keys: []
         values: []
     mAppLovin:
@@ -354,9 +362,9 @@ MonoBehaviour:
       mValue: android.permission.WRITE_EXTERNAL_STORAGE
     mIOSInfoPlistItems:
     - mKey: NSPhotoLibraryUsageDescription
-      mValue: For Saving Screenshoot to Photo Library
+      mValue: '[Your usage description]'
     - mKey: NSPhotoLibraryAddUsageDescription
-      mValue: For Saving Screenshoot to Photo Library
+      mValue: '[Your usage description]'
   mNativeApisSettings:
     mIsMediaEnabled: 0
     mMediaSettings:
@@ -389,6 +397,6 @@ MonoBehaviour:
   mIsIAPModuleEnable: 0
   mIsGameServiceModuleEnable: 0
   mIsNotificationModuleEnable: 0
-  mIsSharingModuleEnable: 1
+  mIsSharingModuleEnable: 0
   mActiveModuleIndex: 0
   mIsSelectingModule: 0

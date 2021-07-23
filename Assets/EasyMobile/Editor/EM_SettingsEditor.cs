@@ -104,9 +104,11 @@ namespace EasyMobile.Editor
             public static EMProperty admobDefaultBannerAdId = new EMProperty(new GUIContent("Banner Ad"));
             public static EMProperty admobDefaultInterstitialAdId = new EMProperty(new GUIContent("Interstitial Ad"));
             public static EMProperty admobDefaultRewardedAdId = new EMProperty(new GUIContent("Rewarded Ad"));
+            public static EMProperty admobDefaultRewardedInterstitialAdId = new EMProperty(new GUIContent("Rewarded Interstitial Ad"));
             public static EMProperty admobCustomBannerAdIds = new EMProperty(new GUIContent("Banner Ads"));
             public static EMProperty admobCustomInterstitialAdIds = new EMProperty(new GUIContent("Interstitial Ads"));
             public static EMProperty admobCustomRewardedAdIds = new EMProperty(new GUIContent("Rewarded Ads"));
+            public static EMProperty admobCustomRewardedInterstitialAdIds = new EMProperty(new GUIContent("Rewarded Interstitial Ads"));
             public static EMProperty admobEnableTestMode = new EMProperty(new GUIContent("Enable Test Mode"));
             public static EMProperty admobAdaptiveBanner = new EMProperty(new GUIContent("Use Adaptive Banner"));
             public static EMProperty admobTestDeviceIds = new EMProperty(new GUIContent("Test Device IDs"));
@@ -402,9 +404,11 @@ namespace EasyMobile.Editor
             AdProperties.admobDefaultBannerAdId.property = AdProperties.admobSettings.FindPropertyRelative("mDefaultBannerAdId");
             AdProperties.admobDefaultInterstitialAdId.property = AdProperties.admobSettings.FindPropertyRelative("mDefaultInterstitialAdId");
             AdProperties.admobDefaultRewardedAdId.property = AdProperties.admobSettings.FindPropertyRelative("mDefaultRewardedAdId");
+            AdProperties.admobDefaultRewardedInterstitialAdId.property = AdProperties.admobSettings.FindPropertyRelative("mDefaultRewardedInterstitialAdId");
             AdProperties.admobCustomBannerAdIds.property = AdProperties.admobSettings.FindPropertyRelative("mCustomBannerAdIds");
             AdProperties.admobCustomInterstitialAdIds.property = AdProperties.admobSettings.FindPropertyRelative("mCustomInterstitialAdIds");
             AdProperties.admobCustomRewardedAdIds.property = AdProperties.admobSettings.FindPropertyRelative("mCustomRewardedAdIds");
+            AdProperties.admobCustomRewardedInterstitialAdIds.property = AdProperties.admobSettings.FindPropertyRelative("mCustomRewardedInterstitialAdIds");
             AdProperties.admobEnableTestMode.property = AdProperties.admobSettings.FindPropertyRelative("mEnableTestMode");
             AdProperties.admobAdaptiveBanner.property = AdProperties.admobSettings.FindPropertyRelative("mUseAdaptiveBanner");
             AdProperties.admobTestDeviceIds.property = AdProperties.admobSettings.FindPropertyRelative("mTestDeviceIds");

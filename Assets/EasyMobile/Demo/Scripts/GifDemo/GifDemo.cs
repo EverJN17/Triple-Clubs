@@ -122,7 +122,14 @@ namespace EasyMobile.Demo
                 www.downloadHandler = new DownloadHandlerBuffer();
                 yield return www.SendWebRequest();
 
-                if (www.isNetworkError || www.isHttpError)
+                bool isError;
+#if UNITY_2020_1_OR_NEWER
+                isError = www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError;
+#else
+                isError = www.isNetworkError || www.isHttpError;
+#endif
+
+                if (isError)
                 {
                     demoGifDownloadingText.text = "Failed to download demo GIF:\n" + www.error;
                     retryDownloadButton.SetActive(true);

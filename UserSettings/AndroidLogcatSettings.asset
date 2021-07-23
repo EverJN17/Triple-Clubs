@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "76f9ceea0408",
         "name": "com.NodsEntertainment.TripleClubs",
-        "processId": 31715,
+        "processId": 3950,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -42,6 +42,12 @@
             "deviceId": "76f9ceea0408",
             "name": "com.NodsEntertainment.TripleClubs",
             "processId": 31715,
+            "exited": false
+        },
+        {
+            "deviceId": "76f9ceea0408",
+            "name": "com.NodsEntertainment.TripleClubs",
+            "processId": 3950,
             "exited": false
         }
     ],
